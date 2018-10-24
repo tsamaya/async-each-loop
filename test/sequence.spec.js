@@ -29,7 +29,7 @@ describe('sequenceForEach Function tests', () => {
         sum += to;
       });
       expect(sum).toEqual(tot);
-      console.log('sum', sum, 'tot', tot);
+      // console.log('sum', sum, 'tot', tot);
       done();
     };
     start();
