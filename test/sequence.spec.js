@@ -35,6 +35,27 @@ describe('sequenceForEach Function tests', () => {
     start();
   });
 
+  // simulate async request and sum up results
+  it('Map async requests', done => {
+    const input = new Map();
+    input.set('foo', 'bar');
+    input.set('jean', 'dupont');
+    input.set('pino', 'tito');
+    let sum = 0;
+    let tot = 0;
+    const start = async () => {
+      await sequenceForEach(input, async () => {
+        const to = Math.floor(Math.random() * 50 + 1);
+        tot += to;
+        await waitFor(to);
+        sum += to;
+      });
+      expect(sum).toEqual(tot);
+      done();
+    };
+    start();
+  });
+
   // //////////////////////////////////////////////////////////////////////////
   //
   // rainy tests
