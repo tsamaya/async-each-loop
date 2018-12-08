@@ -1,6 +1,6 @@
 {
   "name": "async-each-loop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sequence and Parallel forEach Loop",
   "main": "index.js",
   "scripts": {
