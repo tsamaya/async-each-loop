@@ -1,8 +1,6 @@
 # async-each-loop
 
-[![CircleCI branch](https://img.shields.io/circleci/project/github/tsamaya/async-each-loop/master.svg)](https://circleci.com/gh/tsamaya/async-each-loop)
-
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Greenkeeper badge](https://badges.greenkeeper.io/tsamaya/async-each-loop.svg)](https://greenkeeper.io/)
+[![CircleCI branch](https://img.shields.io/circleci/project/github/tsamaya/async-each-loop/master.svg)](https://circleci.com/gh/tsamaya/async-each-loop) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Greenkeeper badge](https://badges.greenkeeper.io/tsamaya/async-each-loop.svg)](https://greenkeeper.io/)
 
 ## Usage
 
