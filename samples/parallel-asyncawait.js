@@ -10,7 +10,7 @@ const urls = [
 ];
 
 const run = async () => {
-  await parallelForEach(urls, async url => {
+  await parallelForEach(urls, async (url) => {
     // doSomething with the URL
     await doSomething(url);
   });

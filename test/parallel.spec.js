@@ -1,23 +1,22 @@
-const { parallelForEach } = require('../');
+const { parallelForEach } = require('..');
 const waitFor = require('./wait');
 
 describe('parallelForEach Function tests', () => {
   // sum array values
-  it('loop over an array', done => {
+  it('loop over an array', async () => {
     const input = [1, 2, 3];
     let sum = 0;
     const start = async () => {
-      await parallelForEach(input, elem => {
+      await parallelForEach(input, (elem) => {
         sum += elem;
       });
-      expect(sum).toEqual(6);
-      done();
     };
-    start();
+    await start();
+    expect(sum).toEqual(6);
   });
 
   // simulate async request and sum up results
-  it('async requests', done => {
+  it('async requests', async () => {
     const input = [1, 2, 3];
     let sum = 0;
     let tot = 0;
@@ -28,14 +27,13 @@ describe('parallelForEach Function tests', () => {
         await waitFor(to);
         sum += to;
       });
-      expect(sum).toEqual(tot);
-      done();
     };
-    start();
+    await start();
+    expect(sum).toEqual(tot);
   });
 
   // simulate async request and sum up results
-  it('Map async requests', done => {
+  it('Map async requests', async () => {
     const input = new Map();
     input.set('foo', 'bar');
     input.set('jean', 'dupont');
@@ -49,46 +47,26 @@ describe('parallelForEach Function tests', () => {
         await waitFor(to);
         sum += to;
       });
-      expect(sum).toEqual(tot);
-      done();
     };
-    start();
+    await start();
+    expect(sum).toEqual(tot);
   });
 
   // //////////////////////////////////////////////////////////////////////////
   //
   // rainy tests
   //
-  it('throw a TypeError function expected', done => {
+  it('throw a TypeError function expected', async () => {
     const input = [1, 2, 3];
-    const start = async () => {
-      try {
-        await parallelForEach(input);
-        // expect throw to bypass these lines
-        expect(true).toBeFalsy();
-        done(-1);
-      } catch (e) {
-        expect(e.constructor).toEqual(TypeError);
-        // success
-        done();
-      }
-    };
-    start();
+
+    const fn = async () => parallelForEach(input);
+
+    await expect(fn()).rejects.toThrow();
   });
-  it('throw a TypeError array expected', done => {
+
+  it('throw a TypeError array expected', async () => {
     const input = {};
-    const start = async () => {
-      try {
-        await parallelForEach(input, elem => elem);
-        // expect throw to bypass these lines
-        expect(true).toBeFalsy();
-        done(-1);
-      } catch (e) {
-        expect(e.constructor).toEqual(TypeError);
-        // success
-        done();
-      }
-    };
-    start();
+    const fn = async () => parallelForEach(input, (elem) => elem);
+    await expect(fn()).rejects.toThrow(TypeError);
   });
 });

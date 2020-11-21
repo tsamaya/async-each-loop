@@ -1,5 +1,5 @@
 const doSomething = (input, ms) =>
-  new Promise(r => {
+  new Promise((r) => {
     const to = ms || Math.floor(Math.random() * 5000 + 1);
     setTimeout(() => {
       console.log(input);

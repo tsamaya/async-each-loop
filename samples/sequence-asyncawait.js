@@ -10,7 +10,7 @@ const urls = [
 ];
 
 const run = async () => {
-  await sequenceForEach(urls, async url => {
+  await sequenceForEach(urls, async (url) => {
     // doSomething with the URL
     await doSomething(url, 50);
   });
