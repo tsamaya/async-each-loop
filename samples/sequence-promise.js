@@ -9,7 +9,7 @@ const urls = [
   'https://www.npmjs.com',
 ];
 
-sequenceForEach(urls, async url => {
+sequenceForEach(urls, async (url) => {
   // doSomething with the URL
   await doSomething(url, 50);
 }).then(() => {
